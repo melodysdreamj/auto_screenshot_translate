@@ -27,15 +27,14 @@ Future<void> main() async {
   });
 
   group('Scene1', () {
-    // test('home screen', () async {
-    //   // await Future.delayed(const Duration(seconds: 5), () {});
-    //   await driver.waitFor(find.text('Flutter Demo Home Page'));
-    //   await screenshot.capture('01');
-    // });
+    test('home screen', () async {
+      // await Future.delayed(const Duration(seconds: 5), () {});
+      await driver.waitFor(find.text('auto translate'));
+      await screenshot.capture('01');
+    });
 
     final buttonFinder = find.byTooltip('Increment');
     test('updated count', () async {
-      await screenshot.capture('01');
       await Future.delayed(const Duration(seconds: 3), () {});
       await driver.tap(buttonFinder);
       await driver.tap(buttonFinder);

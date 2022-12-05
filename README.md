@@ -5,8 +5,11 @@ It is a library that translates apps into 80 languages and automates settings.
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/melodysdren)
 
 # How to Use?
-## 1. prepare the android / ios emulator
-(it should be made to fit the size of the store. please refer [this link](https://appfollow.io/blog/app-store-and-google-play-screenshot-guidelines))
+## 0. preapre
+you need to config [auto_app_translate](https://pub.dev/packages/auto_app_translate) and [auto_store_translate](https://pub.dev/packages/auto_store_translate) library first.
+
+## 1. create android / ios emulator
+it should be made to fit the size of the store. please refer [this link](https://appfollow.io/blog/app-store-and-google-play-screenshot-guidelines)
 ### android
 1. open android studio
 2. tools - Device Manager - Create Device - New Hardware Profile
@@ -46,19 +49,68 @@ It is a library that translates apps into 80 languages and automates settings.
 
 ## 2. set the gitingore.
 - Because there are hundreds of images, you need to exclude those images from git.
-```yaml
-
+```gitignore
+/auto_translation/screenshots/
+/auto_translation/framed/
+/auto_translation/metadata/
 ```
 
 ## 3. Set the scene of the screenshot in the app
 - before taking a screenshot, you need to set which screen to take a screenshot.
+1. download [text_drive.zip](https://github.com/melodysdreamj/auto_screenshot_translate/files/10151335/test_driver.zip) file, and put it in the project root directory.
+   - [text_drive.zip](https://github.com/melodysdreamj/auto_screenshot_translate/files/10151335/test_driver.zip)
+<br/>
+![](https://user-images.githubusercontent.com/21379657/205572412-098ff34d-498c-4d1c-ae2b-ba2f9e37dbe1.png)
+
+- Please set the part you want to screenshot and insert the screenshot code. Please refer to the [official document](https://docs.flutter.dev/get-started/test-drive) for details.
 
 
+2. create "auto_translate" directory in the project root directory.<br/>
+![](https://user-images.githubusercontent.com/21379657/205582934-d8500e06-e918-49c8-b661-8801bff40848.png)
 
-2. 먼저 test_drive 를 설정해야합니다.(스크린샷 씬 설정하기)
+3. download [frameit-chrome.zip]() folder, and put it in the "auto_translate" directory.
 
-이걸 하는 이유는, 앱을 스크린샷 하기전에 어떤 화면을 스크린샷할지를 설정해줘야합니다.
-자세한 내용은 이쪽을 참조해주세요.
+4. create "make_screenshot.dart" file in the "auto_translate" directory and write the following code.
+```dart
+import 'dart:io';
+
+import 'package:emulators/emulators.dart';
+import 'package:auto_screenshot_translate/callable/core_my/my_language_code/entity/flutter_support_language_for_screenshot.dart';
+
+Future<void> main() async {
+   // Create the config instance
+   final emu = await Emulators.build();
+
+   // Shutdown all the running emulators
+   await emu.shutdownAll();
+
+   // For each emulator in the list, we run `flutter drive`.
+   await emu.forEach([
+      'nexus_9',
+      'Samsung_Galaxy_S10',
+      'iPhone 8 Plus',
+      'iPhone 8',
+      'iPad Pro (12.9-inch) (2th generation)',
+      'iPhone 13 Pro Max',
+   ])((device) async {
+      for (final c in flutterLocalizeSupportLanguagesForScreenShot) {
+         final p = await emu.drive(
+            device,
+            'test_driver/main.dart',
+            config: c,
+         );
+         stderr.addStream(p.stderr);
+         await stdout.addStream(p.stdout);
+      }
+   });
+}
+```
+
+
+3. Open the terminal in the project root and enter the following to create a screenshots.
+```bash
+flutter drive --target=test_driver/app.dart
+```
 
 3. 스크린샷을 만들어줍니다.
    다음을 통해서 스크린샷을 만들어줍니다. 스크린샷은 다음 폴더에 언어별로 저장됩니다.
