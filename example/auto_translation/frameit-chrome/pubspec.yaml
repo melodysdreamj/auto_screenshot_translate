@@ -1,0 +1,36 @@
+name: frameit_chrome
+version: 1.0.0
+description: >-
+  Embed app store and play store screenshots in device frames.
+  Drop in replacement for fastlane frameit.
+homepage: https://github.com/authpass/frameit-chrome
+
+executables:
+  frameit_chrome: frameit_chrome
+
+environment:
+  sdk: ">=2.8.0 <3.0.0"
+
+dependencies:
+  meta: '>=1.0.0 <2.0.0'
+  args: ^1.6.0
+  yaml: ^2.2.1
+  logging: '>=0.11.3+2 <1.0.0'
+  logging_appenders: ^0.4.2+5
+  image: ^2.1.14
+  # (Small) utility packages
+  quiver: ">=2.0.0 <3.0.0"
+  path: ^1.7.0
+  json_annotation: ^3.0.1
+  archive: ^2.0.13
+  supercharged_dart: ^1.2.0
+
+dev_dependencies:
+  pedantic: ^1.9.2
+  json_serializable: ^3.4.1
+  build_runner: ^1.10.2
+  builder_static_text: ^0.0.1+2
+  source_gen: ^0.9.6
+  build: ">=1.3.0 <2.0.0"
+  glob: ^1.2.0
+  recase: ^3.0.0
