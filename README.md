@@ -1,5 +1,7 @@
 # Auto App Translate
 
+[![Pub](https://img.shields.io/pub/v/auto_screenshot_translate.svg)](https://pub.dev/packages/auto_screenshot_translate)
+
 It is a library that translates apps into 80 languages and automates settings.
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/melodysdren)
