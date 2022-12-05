@@ -17,6 +17,8 @@ class MyScreenshotInfo {
 
   String screenshotStartLanguageCode = "en";
 
+  String googleTranslateApiKey = "";
+
   MyScreenshotInfo({
     required this.screenshotTitle01,
     required this.screenshotTitle02,
@@ -29,7 +31,10 @@ class MyScreenshotInfo {
     required this.screenshotSubTitle04,
     required this.screenshotSubTitle05,
     required this.screenshotStartLanguageCode,
+    required this.googleTranslateApiKey,
   });
+
+
 }
 
 // main() {

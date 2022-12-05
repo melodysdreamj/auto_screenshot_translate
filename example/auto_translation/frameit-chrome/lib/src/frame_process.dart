@@ -45,9 +45,9 @@ class FrameProcess {
 
     final ret = <String>[];
     for (final r in rewrite) {
-      print('r:${r.pattern} name:$name');
+      // print('r:${r.pattern} name:$name');
       final hasMatch = name.contains(r.pattern);// r.pattern.contains(name);// r.patternRegExp.hasMatch(name);
-      print('hasMatch:$hasMatch');
+      // print('hasMatch:$hasMatch');
       if (!hasMatch) {
         if (r.action == FileAction.include) {
           return ret;
@@ -100,7 +100,7 @@ class FrameProcess {
 
       for (final variant in name) {
 
-        print('dir:${dir} variant:${variant.toString()}');
+        // print('dir:${dir} variant:${variant.toString()}');
 
         final result = await _processScreenshot(
           dir,
@@ -142,6 +142,8 @@ class FrameProcess {
     // }).join('');
 
 
+  print("하이루:${outDir.path}");
+    await new File(path.join(outDir.path, '_preview.html')).create(recursive: true);
 
     await File(path.join(outDir.path, '_preview.html')).writeAsString('''
     <!--suppress ALL --><html lang="en"><head><title>present me</title>
@@ -174,8 +176,11 @@ class FrameProcess {
     <body></body></html>
     ''');
 
+    print("하이루2");
+
     return createdScreenshots;
   }
+
 
   Future<ProcessScreenshotResult> _processScreenshot(
       Directory srcDir,

@@ -90,7 +90,8 @@ Future<void> runFrame(String baseDir, String framesDirPath, String chromeBinary,
   }
   final config = await FrameConfig.load(baseDir);
 
-  print('config:${config.toJson()[0].toString()}');
+  print('baseDir: $baseDir');
+  // print('config:${config.toJson()[0].toString()}');
   await outDir.create(recursive: true);
   final framesDir = Directory(framesDirPath);
   checkArgument(framesDir.existsSync(),
@@ -98,7 +99,7 @@ Future<void> runFrame(String baseDir, String framesDirPath, String chromeBinary,
   final framesProvider = await FramesProvider.create(framesDir);
 
   for (final element in framesProvider.frames) {
-    print('deviceName:${element.name}');
+    // print('deviceName:${element.name}');
   }
 
   final tempDir = await Directory.systemTemp.createTemp('frameit_chrome');

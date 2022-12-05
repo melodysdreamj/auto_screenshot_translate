@@ -109,6 +109,79 @@ Future<void> main() async {
 dart auto_translation/make_screenshots.dart 
 ```
 
+6. you can see the screenshots in the "auto_translation/screenshots" directory.<br/><br/>
+![](https://user-images.githubusercontent.com/21379657/205600688-fa5eda3f-c354-4d15-9812-9636d47a5c10.png)
+
+
+
+
+7. remove underbar in the file name of the galaxy screenshots.<br/><br/>
+- create dart file name is "frame_galaxy_remove_under_bar.dart" in the "auto_translate" directory and write the following code.
+```dart
+import 'package:auto_screenshot_translate/auto_screenshot_translate.dart';
+
+Future<void> main() async {
+  AutoScreenshotTranslate.removeUnderBarInGalaxy();
+}
+```
+   - run this file in the terminal.
+```bash
+dart auto_translation/frame_galaxy_remove_under_bar.dart 
+```
+
+
+8. prepare screenshot title for generate store images.
+- create dart file name is "frame_prepare.dart" in the "auto_translate" directory and write the following code.
+```dart
+import 'package:auto_screenshot_translate/auto_screenshot_translate.dart';
+import 'package:auto_screenshot_translate/callable/core_my/my_screenshot_helper/entity/my_screenshot_info.dart';
+
+Future<void> main() async {
+  MyScreenshotInfo myScreenshotInfo = MyScreenshotInfo(
+    // not use
+    screenshotTitle01: "",
+    screenshotTitle02: "",
+    screenshotTitle03: "",
+    screenshotTitle04: "",
+    screenshotTitle05: "",
+
+    // using (screenshot top text)
+    screenshotSubTitle01: "",
+    screenshotSubTitle02: "",
+    screenshotSubTitle03: "",
+    screenshotSubTitle04: "",
+    screenshotSubTitle05: "",
+
+    // screenshot start language for translate
+    screenshotStartLanguageCode: "en",
+  );
+
+  AutoScreenshotTranslate.prepareGenerateScreenshotFrame(myScreenshotInfo);
+}
+```
+- Fill in the screenshotSubTitle0~ with the instructions you want to use and run the code below at the project root terminal.
+```bash
+dart auto_translation/frame_prepare.dart
+```
+- after translate, you can see "keyword.strings" file in the auto_translation/screenshots directory.<br/>
+![](https://user-images.githubusercontent.com/21379657/205615306-3c8ad43b-7796-42ea-a235-9dc19572a19c.png)
+
+9. 스토어 이미지를 생성하기위해 다음 명령어를 프로젝트루트 터미널에서 입력해주세요. 
+9. Enter the following command in the project root terminal to generate store images.
+```bash
+dart auto_translation/frameit-chrome/bin/frameit_chrome.dart 
+```
+
+
+   3. you can see the screenshots in the "auto_translation/screenshots" directory.<br/><br/>
+
+8. create title.strings and description.strings file in the "auto_translation/metadata" directory.<br/><br/>
+9. 
+
+
+
+
+
 3. 스크린샷을 만들어줍니다.
    다음을 통해서 스크린샷을 만들어줍니다. 스크린샷은 다음 폴더에 언어별로 저장됩니다.
 

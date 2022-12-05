@@ -27,7 +27,7 @@ class MyScreenshotHelperSpell {
   }
 
   prepareGenerateScreenshotFrame(
-      MyScreenshotInfo myScreenshotInfo, String googleTranslateApiKey) async {
+      MyScreenshotInfo myScreenshotInfo) async {
     //keyword.strings (안쓰는것)
     _makeStringFile(
         myScreenshotInfo.screenshotTitle01,
@@ -37,7 +37,7 @@ class MyScreenshotHelperSpell {
         myScreenshotInfo.screenshotTitle05,
         fromLang: myScreenshotInfo.screenshotStartLanguageCode,
         fileName: 'keyword.strings',
-        googleTranslateApiKey);
+        myScreenshotInfo.googleTranslateApiKey);
 
     //title.strings (현재사용중)
     _makeStringFile(
@@ -48,12 +48,12 @@ class MyScreenshotHelperSpell {
         myScreenshotInfo.screenshotSubTitle05,
         fromLang: myScreenshotInfo.screenshotStartLanguageCode,
         fileName: 'title.strings',
-        googleTranslateApiKey);
+        myScreenshotInfo.googleTranslateApiKey);
   }
 
   distributeScreenshotFrameFile() async {
     List<Directory> langsFolder = await _getLangsFoldersInFolder(FRAMED_PATH);
-    print(langsFolder);
+    print('langsFolder:$langsFolder');
 
     for (var element in langsFolder) {
       print(element);
@@ -274,7 +274,7 @@ class MyScreenshotHelperSpell {
 
   _changeGalaxy(Iterable<File> allFiles) {
     for (var element in allFiles) {
-      print("여긴왔냐?:${basename(element.path)}");
+      // print("여긴왔냐?:${basename(element.path)}");
       if (basename(element.path).contains('Samsung_Galaxy_S10')) {
         // print("여긴왔냐?");
         _changeFileNameOnly(

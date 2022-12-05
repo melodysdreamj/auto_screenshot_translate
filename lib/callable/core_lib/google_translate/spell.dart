@@ -13,7 +13,7 @@ class GoogleTranslateSpell {
     toLanguage = MyLanguageCodeSpell.to
         .convertFlutterLanguageCodeToGoogleApiLanguageCode(toLanguage);
 
-    if(apiKey == "INPUT_YOUR_GOOGLE_TRANSLATE_API_KEY"){
+    if(apiKey == "INPUT_YOUR_GOOGLE_TRANSLATE_API_KEY" || apiKey == ""){
       return await FreeGoogleTranslationSpell().translate(text, to: toLanguage);
     }
 
