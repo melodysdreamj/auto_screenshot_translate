@@ -12,13 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^2.0.0
-
   csv: ^5.0.1
   quiver: ^3.0.1+1
   dio: ^4.0.4
@@ -26,6 +19,13 @@ dev_dependencies:
 
   http: ^0.13.5
   path: ^1.8.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
