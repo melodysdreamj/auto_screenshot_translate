@@ -42,3 +42,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+/auto_translation/screenshots/
+/auto_translation/framed/
+/auto_translation/metadata/`

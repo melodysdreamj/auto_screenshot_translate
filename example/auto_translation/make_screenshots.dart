@@ -10,16 +10,21 @@ Future<void> main() async {
   // Shutdown all the running emulators
   await emu.shutdownAll();
 
+  var locals = [
+    {'locale': 'ko'},
+    {'locale': 'en'}
+  ];
+
   // For each emulator in the list, we run `flutter drive`.
   await emu.forEach([
     'nexus_9',
     'Samsung_Galaxy_S10',
     'iPhone 8 Plus',
     'iPhone 8',
-    'iPad Pro (12.9-inch) (2th generation)',
+    'iPad Pro (12.9-inch) (5th generation)',
     'iPhone 13 Pro Max',
   ])((device) async {
-    for (final c in flutterLocalizeSupportLanguagesForScreenShot) {
+    for (final c in locals) {
       final p = await emu.drive(
         device,
         'test_driver/main.dart',

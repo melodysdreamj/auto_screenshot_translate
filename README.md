@@ -6,7 +6,9 @@ It is a library that translates apps into 80 languages and automates settings.
 
 # How to Use?
 ## 0. preapre
-you need to config [auto_app_translate](https://pub.dev/packages/auto_app_translate) and [auto_store_translate](https://pub.dev/packages/auto_store_translate) library first.
+The following libraries must be set up to apply this library
+- [auto_app_translate](https://pub.dev/packages/auto_app_translate)
+- [auto_store_translate](https://pub.dev/packages/auto_store_translate)
 
 ## 1. create android / ios emulator
 it should be made to fit the size of the store. please refer [this link](https://appfollow.io/blog/app-store-and-google-play-screenshot-guidelines)
@@ -23,13 +25,6 @@ it should be made to fit the size of the store. please refer [this link](https:/
    2. nexus_9
       1. Device Name: nexus_9
       2. Screen - Resolution: 1536 x 2048
-      3. click next until "Verify Configuration" step
-      4. click "Show Advanced Settings"
-      5. Emulated Performance - Boot option: Cold Boot
-      6. Memory and Storage - Internal Storage: more then 2000MB
-   3. Nexus_5X
-      1. Device Name: Nexus_5X
-      2. Screen - Resolution: 1080 x 1920
       3. click next until "Verify Configuration" step
       4. click "Show Advanced Settings"
       5. Emulated Performance - Boot option: Cold Boot
@@ -57,7 +52,7 @@ it should be made to fit the size of the store. please refer [this link](https:/
 
 ## 3. Set the scene of the screenshot in the app
 - before taking a screenshot, you need to set which screen to take a screenshot.
-1. download [text_drive.zip](https://github.com/melodysdreamj/auto_screenshot_translate/files/10151335/test_driver.zip) file, and put it in the project root directory.
+1. download [text_drive.zip](https://github.com/melodysdreamj/auto_screenshot_translate/files/10152582/test_driver.zip) file, and put it in the project root directory.
    - [text_drive.zip](https://github.com/melodysdreamj/auto_screenshot_translate/files/10151335/test_driver.zip)
 <br/>
 ![](https://user-images.githubusercontent.com/21379657/205572412-098ff34d-498c-4d1c-ae2b-ba2f9e37dbe1.png)
@@ -68,7 +63,9 @@ it should be made to fit the size of the store. please refer [this link](https:/
 2. create "auto_translate" directory in the project root directory.<br/>
 ![](https://user-images.githubusercontent.com/21379657/205582934-d8500e06-e918-49c8-b661-8801bff40848.png)
 
-3. download [frameit-chrome.zip]() folder, and put it in the "auto_translate" directory.
+3. download [frameit-chrome.zip](https://github.com/melodysdreamj/auto_screenshot_translate/blob/main/example/auto_translation/frameit-chrome.zip) folder, and put it in the "auto_translate" directory.
+<br/>
+![](https://user-images.githubusercontent.com/21379657/205587548-89dffbcb-224a-4af7-982a-53c42ad3ab72.png)
 
 4. create "make_screenshot.dart" file in the "auto_translate" directory and write the following code.
 ```dart
@@ -90,7 +87,7 @@ Future<void> main() async {
       'Samsung_Galaxy_S10',
       'iPhone 8 Plus',
       'iPhone 8',
-      'iPad Pro (12.9-inch) (2th generation)',
+      'iPad Pro (12.9-inch) (5th generation)',
       'iPhone 13 Pro Max',
    ])((device) async {
       for (final c in flutterLocalizeSupportLanguagesForScreenShot) {
@@ -107,9 +104,9 @@ Future<void> main() async {
 ```
 
 
-3. Open the terminal in the project root and enter the following to create a screenshots.
+5. Open the terminal in the project root and enter the following to create a screenshots.
 ```bash
-flutter drive --target=test_driver/app.dart
+dart auto_translation/make_screenshots.dart 
 ```
 
 3. 스크린샷을 만들어줍니다.

@@ -25,7 +25,7 @@ void main() async {
         supportedLocales: flutterLocalizeSupportLanguagesLocale,
         path: 'assets/localization.done.csv',
         assetLoader: CsvAssetLoader(), // <- this is the important part for app translation
-        fallbackLocale: const Locale('en', 'US'),
+        fallbackLocale: const Locale('en'),
         child: const MyApp()
     ),
   );
