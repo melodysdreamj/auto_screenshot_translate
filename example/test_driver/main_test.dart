@@ -41,6 +41,21 @@ Future<void> main() async {
       await driver.tap(buttonFinder);
       await driver.waitUntilNoTransientCallbacks();
       await screenshot.capture('02');
+      await driver.tap(buttonFinder);
+      await driver.tap(buttonFinder);
+      await driver.tap(buttonFinder);
+      await driver.waitUntilNoTransientCallbacks();
+      await screenshot.capture('03');
+      await driver.tap(buttonFinder);
+      await driver.tap(buttonFinder);
+      await driver.tap(buttonFinder);
+      await driver.waitUntilNoTransientCallbacks();
+      await screenshot.capture('04');
+      await driver.tap(buttonFinder);
+      await driver.tap(buttonFinder);
+      await driver.tap(buttonFinder);
+      await driver.waitUntilNoTransientCallbacks();
+      await screenshot.capture('05');
     });
   });
 }

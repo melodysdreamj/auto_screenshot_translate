@@ -10,10 +10,12 @@ Future<void> main() async {
   // Shutdown all the running emulators
   await emu.shutdownAll();
 
-  var locals = [
-    {'locale': 'ko'},
-    {'locale': 'en'}
-  ];
+  // var locals = [
+  //   {'locale': 'ko'},
+  //   {'locale': 'en'}
+  // ];
+
+  var locals = flutterLocalizeSupportLanguagesForScreenShot;
 
   // For each emulator in the list, we run `flutter drive`.
   await emu.forEach([
