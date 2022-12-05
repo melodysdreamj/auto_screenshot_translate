@@ -46,7 +46,8 @@ class FrameProcess {
     final ret = <String>[];
     for (final r in rewrite) {
       // print('r:${r.pattern} name:$name');
-      final hasMatch = name.contains(r.pattern);// r.pattern.contains(name);// r.patternRegExp.hasMatch(name);
+      final hasMatch = name.contains(r
+          .pattern); // r.pattern.contains(name);// r.patternRegExp.hasMatch(name);
       // print('hasMatch:$hasMatch');
       if (!hasMatch) {
         if (r.action == FileAction.include) {
@@ -82,7 +83,7 @@ class FrameProcess {
     Map<String, String> keywordStrings,
   ) async {
     checkArgument(dir.existsSync(), message: 'Dir does not exist $dir');
-    _logger.info('Processing images in $dir');
+    // _logger.info('Processing images in $dir');
     final createdScreenshots = <ProcessScreenshotResult>[];
     await for (final fileEntity in dir.list(recursive: true)) {
       if (fileEntity is! File) {
@@ -96,10 +97,7 @@ class FrameProcess {
         continue;
       }
 
-
-
       for (final variant in name) {
-
         // print('dir:${dir} variant:${variant.toString()}');
 
         final result = await _processScreenshot(
@@ -111,14 +109,11 @@ class FrameProcess {
           variant,
         );
 
-
-
         if (result != null) {
           createdScreenshots.add(result);
         }
       }
     }
-
 
     final imageHtml = createdScreenshots
         .groupBy<String, ProcessScreenshotResult>(
@@ -141,9 +136,9 @@ class FrameProcess {
     //   return '''<img src="$src" alt="" />''';
     // }).join('');
 
-
-  print("하이루:${outDir.path}");
-    await new File(path.join(outDir.path, '_preview.html')).create(recursive: true);
+    // print("하이루:${outDir.path}");
+    await new File(path.join(outDir.path, '_preview.html'))
+        .create(recursive: true);
 
     await File(path.join(outDir.path, '_preview.html')).writeAsString('''
     <!--suppress ALL --><html lang="en"><head><title>present me</title>
@@ -176,11 +171,10 @@ class FrameProcess {
     <body></body></html>
     ''');
 
-    print("하이루2");
+    // print("하이루2");
 
     return createdScreenshots;
   }
-
 
   Future<ProcessScreenshotResult> _processScreenshot(
       Directory srcDir,
@@ -200,23 +194,20 @@ class FrameProcess {
       return null;
     }
 
-
-
     final replacedTargetName =
         path.join(file.parent.path, '$screenshotName.png');
     final outFilePath = path.join(
         outDir.path, path.relative(replacedTargetName, from: srcDir.path));
     await File(outFilePath).parent.create(recursive: true);
 
-    print('screenshotName:$screenshotName imageConfig?.device:${imageConfig?.device}');
+    // print(
+    //     'screenshotName:$screenshotName imageConfig?.device:${imageConfig?.device}');
 
     // 여기서 찾았네ㅇㅇ
     final frame = framesProvider
         .frameForScreenshot(imageConfig?.device ?? screenshotName);
     _logger.fine(
         'Rendering $screenshotName with title: $title ($keyword) and $frame');
-
-
 
     final image = decodeImage(await file.readAsBytes());
 
@@ -243,7 +234,6 @@ class FrameProcess {
 
     final width = imageConfig?.cropWidth ?? image.width;
     final height = imageConfig?.cropHeight ?? image.height;
-
 
     final result = await Process.run(
         chromeBinary,
