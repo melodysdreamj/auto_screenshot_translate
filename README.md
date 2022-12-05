@@ -64,7 +64,6 @@ it should be made to fit the size of the store. please refer [this link](https:/
 ![](https://user-images.githubusercontent.com/21379657/205582934-d8500e06-e918-49c8-b661-8801bff40848.png)
 
 ### 3. download [frameit-chrome.zip](https://github.com/melodysdreamj/auto_screenshot_translate/blob/main/example/auto_translation/frameit-chrome.zip) folder, and put it in the "auto_translate" directory.
-<br/>
 ![](https://user-images.githubusercontent.com/21379657/205587548-89dffbcb-224a-4af7-982a-53c42ad3ab72.png)
 
 ### 4. create "make_screenshot.dart" file in the "auto_translate" directory and write the following code.
@@ -171,7 +170,7 @@ dart auto_translation/frame_prepare.dart
 dart auto_translation/frameit-chrome/bin/frameit_chrome.dart 
 ```
 
-### 10. You can see that the store image is generated in the "auto_translation/framed" directory as follows.<br/><br/>
+### 10. You can see that the store image is generated in the "auto_translation/framed" directory as follows.
 ![](https://user-images.githubusercontent.com/21379657/205624555-01cd3a66-3963-4550-855e-626405d2ba96.png)
 
 
@@ -188,7 +187,7 @@ Future<void> main() async {
 ```bash
 dart auto_translation/framed_distribute.dart 
 ```
-- You can see the files that are made of structures that fastlane can understand.<br/><br/>
+- You can see the files that are made of structures that fastlane can understand.
 ![](https://user-images.githubusercontent.com/21379657/205647298-0b5e30ed-3845-4af7-be94-8614d4f8dcbe.png)
 
 
