@@ -4,7 +4,10 @@
 
 It is a library that translates apps into 80 languages and automates settings.
 
+![](https://user-images.githubusercontent.com/21379657/205770462-7a9ed41a-68db-450a-bbd6-012a3c752f1d.jpg)
+
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/melodysdren)
+
 
 # How to Use?
 ## 0. preapre
