@@ -10,7 +10,7 @@
 
 
 # How to Use?
-## 0. preapre
+## 0. prepare
 The following libraries must be set up to apply this library
 - [auto_app_translate](https://pub.dev/packages/auto_app_translate)
 - [auto_store_translate](https://pub.dev/packages/auto_store_translate)
