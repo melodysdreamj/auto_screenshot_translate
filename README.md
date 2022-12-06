@@ -2,7 +2,7 @@
 
 [![Pub](https://img.shields.io/pub/v/auto_screenshot_translate.svg)](https://pub.dev/packages/auto_screenshot_translate)
 
-#### It is a library that translates apps into 80 languages and automates settings.
+#### A library that screenshots by language and then creates and distributes store images by language.
 
 ![](https://user-images.githubusercontent.com/21379657/205770462-7a9ed41a-68db-450a-bbd6-012a3c752f1d.jpg)
 

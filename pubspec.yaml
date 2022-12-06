@@ -1,6 +1,6 @@
 name: auto_screenshot_translate
-description: It is a library that translates apps into 80 languages and automates settings.
-version: 0.0.5
+description: A library that screenshots by language and then creates and distributes store images by language.
+version: 0.0.7
 homepage: https://github.com/melodysdreamj/auto_screenshot_translate
 
 
