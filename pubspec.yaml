@@ -1,11 +1,11 @@
 name: auto_screenshot_translate
 description: A library that screenshots by language and then creates and distributes store images by language.
-version: 0.0.7
+version: 0.0.8
 homepage: https://github.com/melodysdreamj/auto_screenshot_translate
 
 
 environment:
-  sdk: '>=2.18.4 <3.0.0'
+  sdk: '>=3.1.2 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
@@ -14,7 +14,7 @@ dependencies:
 
   csv: ^5.0.1
   quiver: ^3.0.1+1
-  dio: ^4.0.4
+  dio: ^5.3.3
   basic_utils: ^5.4.2
 
   http: ^0.13.5

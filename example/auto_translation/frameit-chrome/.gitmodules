@@ -1,3 +1,0 @@
-[submodule "deps/frameit-frames"]
-	path = deps/frameit-frames
-	url = https://github.com/fastlane/frameit-frames.git
