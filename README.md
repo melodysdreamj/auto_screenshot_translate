@@ -71,7 +71,44 @@ it should be made to fit the size of the store. please refer [this link](https:/
 ### 3. download [frameit-chrome.zip](https://github.com/melodysdreamj/auto_screenshot_translate/blob/main/example/auto_translation/frameit-chrome.zip) folder, and put it in the "auto_translate" directory.
 ![](https://user-images.githubusercontent.com/21379657/205587548-89dffbcb-224a-4af7-982a-53c42ad3ab72.png)
 
-### 4. create "make_screenshot.dart" file in the "auto_translate" directory and write the following code.
+
+
+### 4. create "screenshots/frameit.yaml" to auto_translate directory.
+```yaml
+# Optional config to further customize frameit_chrome
+
+# Rewriting file name patterns.
+rewrite:
+   - pattern: 'samsung-galaxy-s10-plus'
+     replace: 'samsungapps-samsung-galaxy-s10-plus'
+     action: duplicate
+
+# Customizing images.
+images:
+   samsungapps-samsung-galaxy-s10-plus:
+      cropHeight: 2600
+      device: 'samsung-galaxy-s10-plus'
+      previewLabel: 'Samsung App Store'
+      css: |
+         .scene {
+           background: rgb(34,193,195);
+           background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+         }
+         .frame-bg-shadow {
+             filter: drop-shadow(25px 25px 15px blue);
+         }
+```
+
+### 5. install dart 2.12
+#### 1. open the terminal and enter the following.
+```bash
+brew install dart@2.12
+brew info dart@2.12
+export PATH="/opt/homebrew/opt/dart@2.12/libexec/bin:$PATH"
+```
+
+
+### 6. create "make_screenshot.dart" file in the "auto_translate" directory and write the following code.
 ```dart
 import 'dart:io';
 
@@ -108,18 +145,18 @@ Future<void> main() async {
 ```
 
 
-### 5. Open the terminal in the project root and enter the following to create a screenshots.
+### 7. Open the terminal in the project root and enter the following to create a screenshots.
 ```bash
 dart auto_translation/make_screenshots.dart 
 ```
 
-### 6. you can see the screenshots in the "auto_translation/screenshots" directory.<br/><br/>
+### 8. you can see the screenshots in the "auto_translation/screenshots" directory.<br/><br/>
 ![](https://user-images.githubusercontent.com/21379657/205600688-fa5eda3f-c354-4d15-9812-9636d47a5c10.png)
 
 
 
 
-### 7. remove underbar in the file name of the galaxy screenshots.<br/><br/>
+### 9. remove underbar in the file name of the galaxy screenshots.<br/><br/>
 - create dart file name is "frame_galaxy_remove_under_bar.dart" in the "auto_translate" directory and write the following code.
 ```dart
 import 'package:auto_screenshot_translate/auto_screenshot_translate.dart';
@@ -134,7 +171,7 @@ dart auto_translation/frame_galaxy_remove_under_bar.dart
 ```
 
 
-### 8. prepare screenshot title for generate store images.
+### 10. prepare screenshot title for generate store images.
 - create dart file name is "frame_prepare.dart" in the "auto_translate" directory and write the following code.
 ```dart
 import 'package:auto_screenshot_translate/auto_screenshot_translate.dart';
@@ -170,16 +207,16 @@ dart auto_translation/frame_prepare.dart
 - after translate, you can see "keyword.strings" file in the auto_translation/screenshots directory.<br/>
 ![](https://user-images.githubusercontent.com/21379657/205615306-3c8ad43b-7796-42ea-a235-9dc19572a19c.png)
 
-### 9. Enter the following command in the project root terminal to generate store images.
+### 11. Enter the following command in the project root terminal to generate store images.
 ```bash
 dart auto_translation/frameit-chrome/bin/frameit_chrome.dart 
 ```
 
-### 10. You can see that the store image is generated in the "auto_translation/framed" directory as follows.
+### 12. You can see that the store image is generated in the "auto_translation/framed" directory as follows.
 ![](https://user-images.githubusercontent.com/21379657/205624555-01cd3a66-3963-4550-855e-626405d2ba96.png)
 
 
-### 11. Move the generated file to the file structure that fastlane can understand.
+### 13. Move the generated file to the file structure that fastlane can understand.
 - create dart file name is "framed_distribute.dart" in the "auto_translate" directory and write the following code.
 ```dart
 import 'package:auto_screenshot_translate/auto_screenshot_translate.dart';
@@ -198,7 +235,7 @@ dart auto_translation/framed_distribute.dart
 
 
 
-### 12. deploy to play store and app store.
+### 14. deploy to play store and app store.
 ### - play store
 
 #### 1. Setup the fastlane config file(android)

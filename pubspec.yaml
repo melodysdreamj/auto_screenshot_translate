@@ -1,6 +1,6 @@
 name: auto_screenshot_translate
 description: A library that screenshots by language and then creates and distributes store images by language.
-version: 0.0.8
+version: 0.0.9
 homepage: https://github.com/melodysdreamj/auto_screenshot_translate
 
 
@@ -17,7 +17,7 @@ dependencies:
   dio: ^5.3.3
   basic_utils: ^5.4.2
 
-  http: ^0.13.5
+  http: ^1.1.0
   path: ^1.8.2
 
 dev_dependencies:
