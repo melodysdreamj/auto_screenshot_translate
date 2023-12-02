@@ -10,8 +10,8 @@ class AutoScreenshotTranslate {
     await MyScreenshotHelperSpell().removeUnderBarInGalaxy();
   }
 
-  static Future prepareGenerateScreenshotFrame(MyScreenshotInfo myScreenshotInfo) async {
-    await MyScreenshotHelperSpell().prepareGenerateScreenshotFrame(myScreenshotInfo);
+  static Future prepareGenerateScreenshotFrame(MyScreenshotInfo myScreenshotInfo,{List<String>? translateSupportLanguages}) async {
+    await MyScreenshotHelperSpell().prepareGenerateScreenshotFrame(myScreenshotInfo,translateSupportLanguages);
   }
 
   static Future distributeScreenshotFrameFile() async {

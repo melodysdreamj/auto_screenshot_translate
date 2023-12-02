@@ -15,6 +15,18 @@ The following libraries must be set up to apply this library
 - [auto_app_translate](https://pub.dev/packages/auto_app_translate)
 - [auto_store_translate](https://pub.dev/packages/auto_store_translate)
 
+### 1. Setup the config file
+```yaml
+dev_dependencies:
+
+   flutter_driver:
+    sdk: flutter
+   emulators: ^0.4.10 
+   auto_screenshot_translate:
+   test: ^1.17.12
+   
+```
+
 ## 1. create android / ios emulator
 it should be made to fit the size of the store. please refer [this link](https://appfollow.io/blog/app-store-and-google-play-screenshot-guidelines)
 ### android
@@ -44,8 +56,8 @@ it should be made to fit the size of the store. please refer [this link](https:/
    5. add
       1. iPhone 8
       2. iPhone 8 Plus
-      3. iPad Pro (12.9-inch) (2rd generation)
-      4. iPhone 13 Pro Max
+      3. iPad Pro (12.9-inch) (5rd generation)
+      4. iPhone 14 Pro Max
 
 ## 2. set the gitingore.
 - Because there are hundreds of images, you need to exclude those images from git.
@@ -58,7 +70,7 @@ it should be made to fit the size of the store. please refer [this link](https:/
 ## 3. Set the scene of the screenshot in the app
 - before taking a screenshot, you need to set which screen to take a screenshot.
 ### 1. download [text_drive.zip](https://github.com/melodysdreamj/auto_screenshot_translate/files/10154605/test_driver.zip) file, and put it in the project root directory.
-   - [text_drive.zip](https://github.com/melodysdreamj/auto_screenshot_translate/files/10154605/test_driver.zip)
+   - [test_drive.zip](https://github.com/melodysdreamj/auto_screenshot_translate/files/10154605/test_driver.zip)
 <br/>
 ![](https://user-images.githubusercontent.com/21379657/205572412-098ff34d-498c-4d1c-ae2b-ba2f9e37dbe1.png)
 
@@ -108,7 +120,7 @@ export PATH="/opt/homebrew/opt/dart@2.12/libexec/bin:$PATH"
 ```
 
 
-### 6. create "make_screenshot.dart" file in the "auto_translate" directory and write the following code.
+### 6. create "make_screenshots.dart" file in the "auto_translate" directory and write the following code.
 ```dart
 import 'dart:io';
 
@@ -178,26 +190,27 @@ import 'package:auto_screenshot_translate/auto_screenshot_translate.dart';
 import 'package:auto_screenshot_translate/callable/core_my/my_screenshot_helper/entity/my_screenshot_info.dart';
 
 Future<void> main() async {
-  MyScreenshotInfo myScreenshotInfo = MyScreenshotInfo(
-    // not use
-    screenshotTitle01: "",
-    screenshotTitle02: "",
-    screenshotTitle03: "",
-    screenshotTitle04: "",
-    screenshotTitle05: "",
+   MyScreenshotInfo myScreenshotInfo = MyScreenshotInfo(
+      // not use
+      screenshotTitle01: "",
+      screenshotTitle02: "",
+      screenshotTitle03: "",
+      screenshotTitle04: "",
+      screenshotTitle05: "",
 
-    // using (screenshot top text)
-    screenshotSubTitle01: "",
-    screenshotSubTitle02: "",
-    screenshotSubTitle03: "",
-    screenshotSubTitle04: "",
-    screenshotSubTitle05: "",
+      // using (screenshot top text)
+      screenshotSubTitle01: "",
+      screenshotSubTitle02: "",
+      screenshotSubTitle03: "",
+      screenshotSubTitle04: "",
+      screenshotSubTitle05: "",
 
-    // screenshot start language for translate
-    screenshotStartLanguageCode: "en",
-  );
+      // screenshot start language for translate
+      screenshotStartLanguageCode: "en",
+      googleTranslateApiKey: '',
+   );
 
-  AutoScreenshotTranslate.prepareGenerateScreenshotFrame(myScreenshotInfo);
+   AutoScreenshotTranslate.prepareGenerateScreenshotFrame(myScreenshotInfo);
 }
 ```
 - Fill in the screenshotSubTitle0~ with the instructions you want to use and run the code below at the project root terminal.

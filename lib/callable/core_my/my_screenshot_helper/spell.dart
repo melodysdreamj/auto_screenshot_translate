@@ -26,8 +26,8 @@ class MyScreenshotHelperSpell {
     }
   }
 
-  prepareGenerateScreenshotFrame(
-      MyScreenshotInfo myScreenshotInfo) async {
+  prepareGenerateScreenshotFrame(MyScreenshotInfo myScreenshotInfo,
+      List<String>? translateSupportLanguages) async {
     //keyword.strings (안쓰는것)
     _makeStringFile(
         myScreenshotInfo.screenshotTitle01,
@@ -37,7 +37,8 @@ class MyScreenshotHelperSpell {
         myScreenshotInfo.screenshotTitle05,
         fromLang: myScreenshotInfo.screenshotStartLanguageCode,
         fileName: 'keyword.strings',
-        myScreenshotInfo.googleTranslateApiKey);
+        myScreenshotInfo.googleTranslateApiKey,
+        translateSupportLanguages: translateSupportLanguages);
 
     //title.strings (현재사용중)
     _makeStringFile(
@@ -48,7 +49,8 @@ class MyScreenshotHelperSpell {
         myScreenshotInfo.screenshotSubTitle05,
         fromLang: myScreenshotInfo.screenshotStartLanguageCode,
         fileName: 'title.strings',
-        myScreenshotInfo.googleTranslateApiKey);
+        myScreenshotInfo.googleTranslateApiKey,
+        translateSupportLanguages: translateSupportLanguages);
   }
 
   distributeScreenshotFrameFile() async {
@@ -165,9 +167,11 @@ class MyScreenshotHelperSpell {
       String screenString5,
       String googleTranslateApiKey,
       {required String fromLang,
-      required String fileName}) async {
+      required String fileName,
+      List<String>? translateSupportLanguages}) async {
     //1. 언어별로 번역해주자.
-    for (var targetLang in googleTranslateSupportLanguages) {
+    for (var targetLang
+        in translateSupportLanguages ?? googleTranslateSupportLanguages) {
       late String resultScreenString1 = "";
       late String resultScreenString2 = "";
       late String resultScreenString3 = "";
