@@ -18,7 +18,6 @@ The following libraries must be set up to apply this library
 ### 1. Setup the config file
 ```yaml
 dev_dependencies:
-
    flutter_driver:
     sdk: flutter
    emulators: ^0.4.10 
@@ -27,7 +26,7 @@ dev_dependencies:
    
 ```
 
-## 1. create android / ios emulator
+## 2. create android / ios emulator
 it should be made to fit the size of the store. please refer [this link](https://appfollow.io/blog/app-store-and-google-play-screenshot-guidelines)
 ### android
 1. open android studio
@@ -59,7 +58,7 @@ it should be made to fit the size of the store. please refer [this link](https:/
       3. iPad Pro (12.9-inch) (5rd generation)
       4. iPhone 14 Pro Max
 
-## 2. set the gitingore.
+## 3. set the gitingore.
 - Because there are hundreds of images, you need to exclude those images from git.
 ```gitignore
 /auto_translation/screenshots/
@@ -67,25 +66,25 @@ it should be made to fit the size of the store. please refer [this link](https:/
 /auto_translation/metadata/
 ```
 
-## 3. Set the scene of the screenshot in the app
+## 4. Set the scene of the screenshot in the app
 - before taking a screenshot, you need to set which screen to take a screenshot.
-### 1. download [text_drive.zip](https://github.com/melodysdreamj/auto_screenshot_translate/files/10154605/test_driver.zip) file, and put it in the project root directory.
-   - [test_drive.zip](https://github.com/melodysdreamj/auto_screenshot_translate/files/10154605/test_driver.zip)
+### 1. download [text_drive.zip](https://github.com/melodysdreamj/auto_screenshot_translate/files/13538354/test_driver.zip) file, and put it in the project root directory.
+   - [test_drive.zip](https://github.com/melodysdreamj/auto_screenshot_translate/files/13538354/test_driver.zip)
 <br/>
 ![](https://user-images.githubusercontent.com/21379657/205572412-098ff34d-498c-4d1c-ae2b-ba2f9e37dbe1.png)
 
 - Please set the part you want to screenshot and insert the screenshot code. Please refer to the [official document](https://docs.flutter.dev/get-started/test-drive) for details.
 
 
-### 2. create "auto_translate" directory in the project root directory.<br/>
+### 2. create "auto_translation" directory in the project root directory.<br/>
 ![](https://user-images.githubusercontent.com/21379657/205582934-d8500e06-e918-49c8-b661-8801bff40848.png)
 
-### 3. download [frameit-chrome.zip](https://github.com/melodysdreamj/auto_screenshot_translate/blob/main/example/auto_translation/frameit-chrome.zip) folder, and put it in the "auto_translate" directory.
+### 3. download [frameit-chrome.zip](https://github.com/melodysdreamj/auto_screenshot_translate/blob/main/example/auto_translation/frameit-chrome.zip) folder, and put it in the "auto_translation" directory.
 ![](https://user-images.githubusercontent.com/21379657/205587548-89dffbcb-224a-4af7-982a-53c42ad3ab72.png)
 
 
 
-### 4. create "screenshots/frameit.yaml" to auto_translate directory.
+### 5. create "screenshots/frameit.yaml" to auto_translation directory.
 ```yaml
 # Optional config to further customize frameit_chrome
 
@@ -111,16 +110,8 @@ images:
          }
 ```
 
-### 5. install dart 2.12
-#### 1. open the terminal and enter the following.
-```bash
-brew install dart@2.12
-brew info dart@2.12
-export PATH="/opt/homebrew/opt/dart@2.12/libexec/bin:$PATH"
-```
 
-
-### 6. create "make_screenshots.dart" file in the "auto_translate" directory and write the following code.
+### 6. create "make_screenshots.dart" file in the "auto_translation" directory and write the following code.
 ```dart
 import 'dart:io';
 
@@ -128,31 +119,64 @@ import 'package:emulators/emulators.dart';
 import 'package:auto_screenshot_translate/callable/core_my/my_language_code/entity/flutter_support_language_for_screenshot.dart';
 
 Future<void> main() async {
-   // Create the config instance
    final emu = await Emulators.build();
 
-   // Shutdown all the running emulators
    await emu.shutdownAll();
 
-   // For each emulator in the list, we run `flutter drive`.
-   await emu.forEach([
+   List<String> devices = [
       'nexus_9',
       'Samsung_Galaxy_S10',
       'iPhone 8 Plus',
       'iPhone 8',
       'iPad Pro (12.9-inch) (5th generation)',
-      'iPhone 13 Pro Max',
-   ])((device) async {
-      for (final c in flutterLocalizeSupportLanguagesForScreenShot) {
-         final p = await emu.drive(
-            device,
-            'test_driver/main.dart',
-            config: c,
-         );
-         stderr.addStream(p.stderr);
-         await stdout.addStream(p.stdout);
-      }
-   });
+      'iPhone 15 Pro Max',
+   ];
+
+   for (int i = 0; i < devices.length; i++) {
+      await emu.forEach([devices[i]])((device) async {
+         for (final c in flutterLocalizeSupportLanguagesForScreenShot) {
+            var p = await emu.drive(
+               device,
+               'test_driver/page1.dart',
+               config: c,
+            );
+            stderr.addStream(p.stderr);
+            await stdout.addStream(p.stdout);
+
+            p = await emu.drive(
+               device,
+               'test_driver/page2.dart',
+               config: c,
+            );
+            stderr.addStream(p.stderr);
+            await stdout.addStream(p.stdout);
+
+            p = await emu.drive(
+               device,
+               'test_driver/page3.dart',
+               config: c,
+            );
+            stderr.addStream(p.stderr);
+            await stdout.addStream(p.stdout);
+
+            p = await emu.drive(
+               device,
+               'test_driver/page4.dart',
+               config: c,
+            );
+            stderr.addStream(p.stderr);
+            await stdout.addStream(p.stdout);
+
+            p = await emu.drive(
+               device,
+               'test_driver/page5.dart',
+               config: c,
+            );
+            stderr.addStream(p.stderr);
+            await stdout.addStream(p.stdout);
+         }
+      });
+   }
 }
 ```
 
@@ -169,7 +193,7 @@ dart auto_translation/make_screenshots.dart
 
 
 ### 9. remove underbar in the file name of the galaxy screenshots.<br/><br/>
-- create dart file name is "frame_galaxy_remove_under_bar.dart" in the "auto_translate" directory and write the following code.
+- create dart file name is "frame_galaxy_remove_under_bar.dart" in the "auto_translation" directory and write the following code.
 ```dart
 import 'package:auto_screenshot_translate/auto_screenshot_translate.dart';
 
@@ -184,7 +208,7 @@ dart auto_translation/frame_galaxy_remove_under_bar.dart
 
 
 ### 10. prepare screenshot title for generate store images.
-- create dart file name is "frame_prepare.dart" in the "auto_translate" directory and write the following code.
+- create dart file name is "frame_prepare.dart" in the "auto_translation" directory and write the following code.
 ```dart
 import 'package:auto_screenshot_translate/auto_screenshot_translate.dart';
 import 'package:auto_screenshot_translate/callable/core_my/my_screenshot_helper/entity/my_screenshot_info.dart';
@@ -220,17 +244,30 @@ dart auto_translation/frame_prepare.dart
 - after translate, you can see "keyword.strings" file in the auto_translation/screenshots directory.<br/>
 ![](https://user-images.githubusercontent.com/21379657/205615306-3c8ad43b-7796-42ea-a235-9dc19572a19c.png)
 
-### 11. Enter the following command in the project root terminal to generate store images.
+### 11. Open a terminal at the location of pubspec.yaml in the frameit-chrome folder and enter the following.
 ```bash
+cd auto_translation/frameit-chrome
+brew install dart@2.12
+brew info dart@2.12
+export PATH="/opt/homebrew/opt/dart@2.12/libexec/bin:$PATH"
+dart pub get
+```
+
+
+### 12. Enter the following command in the project root terminal to generate store images.
+```bash
+brew install dart@2.12
+brew info dart@2.12
+export PATH="/opt/homebrew/opt/dart@2.12/libexec/bin:$PATH"
 dart auto_translation/frameit-chrome/bin/frameit_chrome.dart 
 ```
 
-### 12. You can see that the store image is generated in the "auto_translation/framed" directory as follows.
+### 13. You can see that the store image is generated in the "auto_translation/framed" directory as follows.
 ![](https://user-images.githubusercontent.com/21379657/205624555-01cd3a66-3963-4550-855e-626405d2ba96.png)
 
 
-### 13. Move the generated file to the file structure that fastlane can understand.
-- create dart file name is "framed_distribute.dart" in the "auto_translate" directory and write the following code.
+### 14. Move the generated file to the file structure that fastlane can understand.
+- create dart file name is "framed_distribute.dart" in the "auto_translation" directory and write the following code.
 ```dart
 import 'package:auto_screenshot_translate/auto_screenshot_translate.dart';
 
@@ -248,7 +285,7 @@ dart auto_translation/framed_distribute.dart
 
 
 
-### 14. deploy to play store and app store.
+### 15. deploy to play store and app store.
 ### - play store
 
 #### 1. Setup the fastlane config file(android)
