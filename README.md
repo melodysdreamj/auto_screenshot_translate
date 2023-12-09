@@ -20,7 +20,7 @@ The following libraries must be set up to apply this library
 dev_dependencies:
    flutter_driver:
     sdk: flutter
-   emulators: ^0.4.10 
+   emulators: ^0.5.1
    auto_screenshot_translate:
    test: ^1.17.12
    
